@@ -12,6 +12,7 @@ import * as actions from "./Redux/Action/action";
 function App(props) {
   const [userName, setUserName] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [text, setText] = useState('');
 
   useEffect(() => {
     if(props && props.data && props.data.profileSummaryData) {
@@ -28,7 +29,7 @@ function App(props) {
         return +a.followers - +b.followers;
       });
       setUserName(allUsers);
-      setText("");
+      setText('');
       setLoading(false);
     }
   }, [props && props.data && props.data.profileSummaryData]);
@@ -40,7 +41,6 @@ function App(props) {
     }
   }, [props && props.data && props.data.error]);
   const [error, setError] = useState("");
-  const [text, setText] = useState("");
 
   const addUserToCard = (user) => {
     setLoading(true);
@@ -51,6 +51,9 @@ function App(props) {
   const onChangeHandler = (e) => {
     if (e && e.target && e.target.value) {
       setText(e.target.value.replace(/^\s+/, ''));
+    }
+    if(e && e.target && !e.target.value) {
+      setText('');
     }
   };
 
