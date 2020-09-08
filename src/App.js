@@ -12,10 +12,10 @@ import * as actions from "./Redux/Action/action";
 function App(props) {
   const [userName, setUserName] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   useEffect(() => {
-    if(props && props.data && props.data.profileSummaryData) {
+    if (props && props.data && props.data.profileSummaryData) {
       const data = props && props.data && props.data.profileSummaryData;
       let allUsers = [...userName];
       allUsers.push({
@@ -29,13 +29,13 @@ function App(props) {
         return +a.followers - +b.followers;
       });
       setUserName(allUsers);
-      setText('');
+      setText("");
       setLoading(false);
     }
   }, [props && props.data && props.data.profileSummaryData]);
 
   useEffect(() => {
-    if(props && props.data && props.data.error) {
+    if (props && props.data && props.data.error) {
       setError(true);
       setLoading(false);
     }
@@ -44,16 +44,16 @@ function App(props) {
 
   const addUserToCard = (user) => {
     setLoading(true);
-     props.fetchProfileSummary(user);
+    props.fetchProfileSummary(user);
   };
   const { Header, Footer, Content } = Layout;
 
   const onChangeHandler = (e) => {
     if (e && e.target && e.target.value) {
-      setText(e.target.value.replace(/^\s+/, ''));
+      setText(e.target.value.replace(/^\s+/, ""));
     }
-    if(e && e.target && !e.target.value) {
-      setText('');
+    if (e && e.target && !e.target.value) {
+      setText("");
     }
   };
 
@@ -77,24 +77,30 @@ function App(props) {
             Compare User
           </Button>
           {error && <p className="error">Something went wrong</p>}
-        {isLoading ? <Spin className="loader" />:  <div className="cardWrapper">
-            {userName &&
-              userName.length > 0 &&
-              userName.map((item, index) => {
-                return (
-                  <CardComponent
-                    key={index}
-                    className="cardComponent"
-                    userName={item.userName}
-                    following={item.following}
-                    followers={item.followers}
-                    repo={item.repo}
-                    gist={item.gist}
-                  />
-                );
-              })}
-          </div>
-}
+          {userName && userName.length > 0 && (
+            <h2 className="heading">Profile Card List</h2>
+          )}
+          {isLoading ? (
+            <Spin className="loader" />
+          ) : (
+            <div className="cardWrapper">
+              {userName &&
+                userName.length > 0 &&
+                userName.map((item, index) => {
+                  return (
+                    <CardComponent
+                      key={index}
+                      className="cardComponent"
+                      userName={item.userName}
+                      following={item.following}
+                      followers={item.followers}
+                      repo={item.repo}
+                      gist={item.gist}
+                    />
+                  );
+                })}
+            </div>
+          )}
         </Content>
         <Footer className="footer">Footer</Footer>
       </Layout>

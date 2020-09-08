@@ -60,3 +60,8 @@
   display: block;
   padding: 60px;
 }
+
+.heading {
+  margin: 10px;
+  font-size: 36px;
+}
