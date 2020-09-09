@@ -1,4 +1,4 @@
-This is a web app where you can enter any number of github usernames and see the user details such as followers, following, gist, public repos. You can add multiple users and see the stats of each on an individual card.
+This is a web app based on ReactJs and Redux where you can enter any number of github usernames and see the user details such as followers, following, gist, public repos. You can add multiple users and see the stats of each on an individual card.
 
 To run this app on your local machine:
 
