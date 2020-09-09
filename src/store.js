@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware } from './node_modules/redux';
-import createSagaMiddleware from './node_modules/redux-saga';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import { fork } from 'redux-saga/effects';
 import "regenerator-runtime/runtime";
 
