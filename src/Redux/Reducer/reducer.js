@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
         case actionTypes.FETCH_PROFILE_SUMMARY_START:
             return {...state, isFetching: true}
         case actionTypes.FETCH_PROFILE_SUMMARY_SUCCESS:
-            return {...state, profileSummaryData: data, isFetching: false}
+            return {...state, profileSummaryData: data, isFetching: false, error}
         case actionTypes.FETCH_PROFILE_SUMMARY_FAILURE:
             return {...state, isError: true, error}
     }

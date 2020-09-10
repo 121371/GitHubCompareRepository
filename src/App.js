@@ -38,6 +38,8 @@ function App(props) {
     if (props && props.data && props.data.error) {
       setError(true);
       setLoading(false);
+    } else {
+      setError(false);
     }
   }, [props && props.data && props.data.error]);
   const [error, setError] = useState("");
